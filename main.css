@@ -1,0 +1,114 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #333;
+}
+
+header .info {
+    background-color: #333;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+header h1 {
+    background-color: #e0ffe0;
+    margin: 0;
+    padding: 20px 0 20px 15px;
+}
+
+nav {
+    background-color: #e0ffe0;
+    padding: 10px;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+nav ul li {
+    width: 200px;
+    display: inline-block;
+    color: #333;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav ul li a, nav ul li a:visited, nav ul li a:active {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    padding: 15px 0;
+    width: 100%;
+    border-radius: 3px;
+    transition: all 300ms;
+}
+nav ul li a:hover {
+    color: #4a0;
+}
+
+nav .searchbox {
+    display: inline-block;
+    padding-top: 11px;
+}
+
+nav .searchbox button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0.7;
+}
+nav .searchbox button:hover {
+    opacity: 1;
+}
+
+main {
+    background-color: white;
+    color: #333;
+    padding: 30px 0;
+}
+
+footer {
+    padding: 25px;
+    color: #eee;
+    background-color: #333;
+}
+
+.card {
+    display: inline-block;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+    padding: 7px;
+    transition: all 300ms;
+}
+
+.card a {
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+    transition: all 300ms;
+}
+
+.card:hover {
+    box-shadow: 0 0 7px #ada;
+}
+
+.card a:hover {
+    color: #4a0;
+}
+
+.card .image {
+    height: 350px;
+}
+
+.card .image img {
+    max-width: 250px;
+    max-height: 350px;
+}
