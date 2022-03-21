@@ -1,44 +1,74 @@
 <!doctype html>
 <html lang="ru">
 	<head>
-    	<meta charset="utf-8">
-    	<title>Иван Иванов. Лабораторные по курсу "Интернет-программирование"</title>
+		<meta charset="utf-8">
+		<title>Иван Иванов. Лабораторные по курсу "Интернет-программирование"</title>
+		<link rel="stylesheet" href="main.css">
+		<style>
+			.breadcrumbs {
+				color: #fafafa;
+				height: 23px;
+			}
+			.breadcrumbs a {
+				color: #e0e0fa;
+				
+			}
+		</style>
 	</head>
 
 	<body>
-		комплектующие. тел: 11-22-33
-		<hr>
+		<header>
+			<div class="info">Телефон: 11-22-33</div>
+			<h1>Маркет. Компьютерные комплектующие</h1>
+		</header>
 
-    	<h1>Маркет. Компьютерные комплектующие</h1>
+		<nav class="main-menu">
+			<ul>
+				<li><a href="index.html">Товары</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+				<li><a href="delivery.html">Доставка</a></li>
+				<li><a href="promotions.html">Акции</a></li>
+			</ul>
+			<div class="searchbox">
+				<input type="search" placeholder="поиск по товарам">
+				<button>&#x1F50E;</button>
+			</div>
+		</nav>
 
-		<div><a href="#">Главная</a> / Мышь обычная</div>
+		<div class="breadcrumbs">
+			<a href="#">Главная</a> / Мышь обычная
+		</div>
 
-		<img src="mouse1.jpg" width="300"> <img src="mouse2.jpg" width="300"> <img src="mouse3.jpg" width="300"><br>
+		<main>
+			<img src="mouse1.jpg" width="300"> <img src="mouse2.jpg" width="300"> <img src="mouse3.jpg" width="300"><br>
 
-		<table>
-			<tr>
-				<td>Описание:</td>
-				<td>Это удивительно обычная компьютерная мышь! В ней нет ничего необычного!</td>
-			</tr>
-			<tr>
-				<td>Количество кнопок:</td>
-				<td>18</td>
-			</tr>
-			<tr>
-				<td>Цвет:</td>
-				<td>Бежевый</td>
-			</tr>
-			<tr>
-				<td>Для левши/правши:</td>
-				<td>для амбидекстров</td>
-			</tr>
-			<tr>
-				<td>Цена:</td>
-				<td>500 &#8381;</td>
-			</tr>
-		</table>
+			<table>
+				<tr>
+					<td>Описание:</td>
+					<td>Это удивительно обычная компьютерная мышь! В ней нет ничего необычного!</td>
+				</tr>
+				<tr>
+					<td>Количество кнопок:</td>
+					<td>18</td>
+				</tr>
+				<tr>
+					<td>Цвет:</td>
+					<td>Бежевый</td>
+				</tr>
+				<tr>
+					<td>Для левши/правши:</td>
+					<td>для амбидекстров</td>
+				</tr>
+				<tr>
+					<td>Цена:</td>
+					<td>500 &#8381;</td>
+				</tr>
+			</table>
+		</main>
 
-		<hr>
-		&copy; Супер-магазин, 1812. С помощью наших комплектующих победили Наполеона!
-    </body>
+		<footer>
+			&copy; Супер-магазин, 1812. С помощью наших комплектующих победили Наполеона!
+		</footer>
+
+	</body>
 </html>
