@@ -4,9 +4,51 @@
 		<meta charset="utf-8">
 		<title>Иван Иванов. Лабораторные по курсу "Интернет-программирование"</title>
 		<link rel="stylesheet" href="main.css">
+        <script>
+            console.log("Всем привет!!! :)");
+            console.error("Сообщение об ошибке");
+            console.warn("Сообщение-предупреждение");
+
+            function notReadyAlert() {
+                alert('Sorry, not ready yet!\nИзвините, ещё не готово!');
+                return false;
+            }
+
+            function search() {
+                let name = document.getElementById('search').value;
+                let productNumber = null;
+                if (name == 'мышь') {
+                    productNumber = 0;
+                } else if (name == 'hdd') {
+                    productNumber = 1;
+                } else if (name == 'гарнитура') {
+                    productNumber = 2;
+                } else {
+                    alert('Товар не найден');
+                }
+
+                let cards = document.getElementsByClassName('card');
+                let card = cards[productNumber];
+                card.style.border = '1px dashed red';
+                card.style.backgroundColor = 'yellow';
+
+                setTimeout(function() {
+                    card.style.border = 'none';
+                    card.style.backgroundColor = '';
+                }, 2000);
+            }
+
+            function loaded() {
+                let searchbox = document.getElementById('search');
+                searchbox.addEventListener('keydown', function (key) {
+                    if(key.key == 'Enter')
+                        search();
+                });
+            }
+        </script>
 	</head>
 
-	<body>
+	<body onload="loaded()">
 		<header>
 			<div class="info">Телефон: 11-22-33</div>
 			<h1>Маркет. Компьютерные комплектующие</h1>
@@ -15,13 +57,13 @@
 		<nav class="main-menu">
 			<ul>
 				<li><a href="index.html">Товары</a></li>
-				<li><a href="contacts.html">Контакты</a></li>
-				<li><a href="delivery.html">Доставка</a></li>
-				<li><a href="promotions.html">Акции</a></li>
+				<li><a href="contacts.html" onclick="return notReadyAlert()">Контакты</a></li>
+				<li><a href="delivery.html" onclick="return notReadyAlert()">Доставка</a></li>
+				<li><a href="promotions.html" onclick="return notReadyAlert()">Акции</a></li>
 			</ul>
 			<div class="searchbox">
-				<input type="search" placeholder="поиск по товарам">
-				<button>&#x1F50E;</button>
+				<input type="search" placeholder="поиск по товарам" id="search">
+				<button onclick="search()">&#x1F50E;</button>
 			</div>
 		</nav>
 
