@@ -114,7 +114,10 @@ footer {
 }
 
 .modal {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 200ms 150ms;
+
     width: 300px;
     position: fixed;
     left: 50%;
@@ -136,12 +139,14 @@ footer {
     padding: 7px;
 }
 .overlay {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 200ms;
+
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     height: 100%;
-    background-color: black;
-    opacity: 0.3;
+    background-color: rgba(0, 0, 0, 0.3);
 }
