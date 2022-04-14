@@ -2,8 +2,29 @@ console.log("Всем привет!!! :)");
 console.error("Сообщение об ошибке");
 console.warn("Сообщение-предупреждение");
 
+function showModal(messageText, buttonText) {
+    let modal = document.getElementsByClassName('modal')[0];
+    modal.style.display = 'block';
+    
+    let message = modal.getElementsByClassName('message')[0];
+    message.innerHTML = messageText;
+    let button = modal.getElementsByTagName('button')[0];
+    button.innerHTML = buttonText;
+
+    document.body.style.overflow = 'hidden';
+    let overlay = document.getElementsByClassName('overlay')[0];
+    overlay.style.display = 'block';
+}
+function hideModal() {
+    let modal = document.getElementsByClassName('modal')[0];
+    modal.style.display = 'none';
+
+    document.body.style.overflow = 'auto';
+    let overlay = document.getElementsByClassName('overlay')[0];
+    overlay.style.display = 'none';
+}
 function notReadyAlert() {
-    alert('Sorry, not ready yet!\nИзвините, ещё не готово!');
+    showModal('Sorry, not ready yet!<br>Извините, ещё не готово!', 'Эх, жаль');
     return false;
 }
 
