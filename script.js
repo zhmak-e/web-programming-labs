@@ -6,6 +6,8 @@ function showModal(messageText, buttonText) {
     let modal = document.getElementsByClassName('modal')[0];
     modal.style.visibility = 'visible';
     modal.style.opacity = '1';
+    modal.style.top = '20%';
+    modal.style.transform = 'scale(1)';
     
     let message = modal.getElementsByClassName('message')[0];
     message.innerHTML = messageText;
@@ -21,15 +23,21 @@ function hideModal() {
     let modal = document.getElementsByClassName('modal')[0];
     setTimeout(function() {
         modal.style.visibility = 'hidden';
+        modal.style.top = '-5%';
+        modal.style.transform = 'scale(0)';
     }, 350); // 200ms + 150ms
+    modal.style.top = '105%';
     modal.style.opacity = '0';
+    modal.style.transform = 'scale(2)';
 
     document.body.style.overflow = 'auto';
     let overlay = document.getElementsByClassName('overlay')[0];
     setTimeout(function() {
         overlay.style.visibility = 'hidden';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
     }, 200);
     overlay.style.opacity = '0';
+    overlay.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
 }
 function notReadyAlert() {
     showModal('Sorry, not ready yet!<br>Извините, ещё не готово!', 'Эх, жаль');
