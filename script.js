@@ -1,7 +1,3 @@
-console.log("Всем привет!!! :)");
-console.error("Сообщение об ошибке");
-console.warn("Сообщение-предупреждение");
-
 function showModal(messageText, buttonText) {
     let modal = document.getElementsByClassName('modal')[0];
     modal.style.visibility = 'visible';
@@ -39,8 +35,9 @@ function hideModal() {
     overlay.style.opacity = '0';
     overlay.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
 }
-function notReadyAlert() {
+function notReadyAlert(event) {
     showModal('Sorry, not ready yet!<br>Извините, ещё не готово!', 'Эх, жаль');
+    event.preventDefault();
     return false;
 }
 
@@ -68,10 +65,39 @@ function search() {
     }, 2000);
 }
 
+function generateMenu() {
+    let menu = document.querySelector('nav.main-menu ul');
+    menu.innerHTML = '';
+
+    let items = [
+        {href: 'index.html', text: 'Товары'},
+        {href: '', text: 'Контакты'},
+        {href: '', text: 'Доставка'},
+        {href: '', text: 'Акции'},
+        {href: 'about-us.html', text: 'О нас'},
+    ];
+
+    for(let i = 0; i<items.length; i++) {
+        let link = document.createElement('a');
+        link.innerText = items[i].text;
+        link.href = items[i].href;
+        if(items[i].href == '') {
+            link.addEventListener('click', notReadyAlert);
+        }
+        
+        let menuItem = document.createElement('li');
+        menuItem.appendChild(link);
+
+        menu.appendChild(menuItem);
+    }
+}
+
 function loaded() {
     let searchbox = document.getElementById('search');
     searchbox.addEventListener('keydown', function (key) {
         if(key.key == 'Enter')
             search();
     });
+
+    generateMenu();
 }
