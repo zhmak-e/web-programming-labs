@@ -92,6 +92,33 @@ function generateMenu() {
     }
 }
 
+function generateCards() {
+    let products = [
+        {image: 'mouse1.jpg', name: 'Мышь обычная', price: 500},
+        {image: 'hdd.jpg', name: 'HDD 2 Tb', price: 15000},
+        {image: 'earph1.jpg', name: 'Гарнитура', price: 3700},
+    ];
+
+    let main = document.querySelector('main');
+    for(let product of products) {
+        let cardDiv = document.createElement('div');
+        cardDiv.className = 'card';
+    }
+
+    
+        cardDiv.innerHTML = `
+            <div class="card">
+                <a href="product1.html">
+                    <div class="image"><img src="mouse1.jpg"></div>
+                    <div class="product-name">Мышь обычная</div>
+                    <div class="price">500 &#8381;</div>
+                </a>
+            </div>
+        `;
+        main.append(cardDiv);
+    }
+}
+
 function loaded() {
     let searchbox = document.getElementById('search');
     searchbox.addEventListener('keydown', function (key) {
@@ -100,4 +127,5 @@ function loaded() {
     });
 
     generateMenu();
+    generateCards();
 }
