@@ -1,3 +1,9 @@
+let products = [
+    {image: 'mouse1.jpg', name: 'Мышь обычная', price: 500, info: 'Есть все клавиши! Снизу светится!'},
+    {image: 'hdd.jpg', name: 'HDD 2 Tb', price: 15000, info: 'Очень большая ёмкость, советуем!'},
+    {image: 'earph1.jpg', name: 'Гарнитура', price: 3700, info: 'На голове сидит как влитая!'},
+];
+
 function showModal(messageText, buttonText) {
     let modal = document.getElementsByClassName('modal')[0];
     modal.style.visibility = 'visible';
@@ -42,27 +48,22 @@ function notReadyAlert(event) {
 }
 
 function search() {
-    let name = document.getElementById('search').value;
-    let productNumber = null;
-    if (name == 'мышь') {
-        productNumber = 0;
-    } else if (name == 'hdd') {
-        productNumber = 1;
-    } else if (name == 'гарнитура') {
-        productNumber = 2;
-    } else {
-        alert('Товар не найден');
-    }
-
     let cards = document.getElementsByClassName('card');
-    let card = cards[productNumber];
-    card.style.border = '1px dashed red';
-    card.style.backgroundColor = 'yellow';
-
-    setTimeout(function() {
-        card.style.border = 'none';
-        card.style.backgroundColor = '';
-    }, 2000);
+    let name = document.getElementById('search').value;
+    let nameRegExp = new RegExp(name, 'i');
+    for(let i = 0; i<products.length; i++) {
+        let product = products[i];
+        if(nameRegExp.test(product.name)) {
+            let card = cards[i];
+            card.style.border = '1px dashed red';
+            card.style.backgroundColor = 'yellow';
+            
+            setTimeout(function() {
+                card.style.border = 'none';
+                card.style.backgroundColor = '';
+            }, 2000);
+        }
+    }
 }
 
 function generateMenu() {
@@ -92,29 +93,30 @@ function generateMenu() {
     }
 }
 
-function generateCards() {
-    let products = [
-        {image: 'mouse1.jpg', name: 'Мышь обычная', price: 500},
-        {image: 'hdd.jpg', name: 'HDD 2 Tb', price: 15000},
-        {image: 'earph1.jpg', name: 'Гарнитура', price: 3700},
-    ];
+function showProductInfo(product) {
+    showModal(`
+        <div><img src="${product.image}"></div>
+        <div>${product.name}</div>
+        <div>${product.price} &#8381;</div>
+        <div><i>${product.info}</i></div>
+    `, 'Закрыть');
+}
 
+function generateCards() {
     let main = document.querySelector('main');
     for(let product of products) {
         let cardDiv = document.createElement('div');
         cardDiv.className = 'card';
-    }
-
-    
         cardDiv.innerHTML = `
-            <div class="card">
-                <a href="product1.html">
-                    <div class="image"><img src="mouse1.jpg"></div>
-                    <div class="product-name">Мышь обычная</div>
-                    <div class="price">500 &#8381;</div>
-                </a>
-            </div>
+            <a href="#">
+                <div class="image"><img src="${product.image}"></div>
+                <div class="product-name">${product.name}</div>
+                <div class="price">${product.price} &#8381;</div>
+            </a>
         `;
+        cardDiv.querySelector('a').addEventListener('click', function() {
+            showProductInfo(product);
+        });
         main.append(cardDiv);
     }
 }
