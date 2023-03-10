@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: black;
+    background-image: linear-gradient(to right, black, red, green, yellow);
     color: LightGreen;
     padding: 10px;
     font-size: 16pt;
