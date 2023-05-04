@@ -8,9 +8,28 @@
     <link rel="stylesheet" href="main.css">
 
     <style>
+        /* */
+        img.rose {
+            width: 80px;
+            position: absolute;
+            display: block;
+            z-index: -10;
+        }
     </style>
 
     <script>
+        //
+        function showRoses() {
+            let roses = document.getElementById('roses');
+            for(let i = 0; i < 100; i++) {
+                let pict = document.createElement('img');
+                pict.src = 'rose.png';
+                pict.className = 'rose';
+                pict.style.left = (Math.random()*window.innerWidth - 80) + 'px';
+                pict.style.top = Math.random()*window.innerHeight + 'px';
+                roses.appendChild(pict);
+            }
+        }
     </script>
 </head>
 
@@ -20,6 +39,9 @@
     </header>
 
     <main>
+        <!-- -->
+        <button onclick="showRoses()">Показать цветы</button>
+        <div id="roses"></div>
     </main>
 
     <footer>
