@@ -12,12 +12,20 @@ header {
     font-size: 16pt;
 }
 
+main {
+    margin: 10px 20px;
+}
+
 footer {
     background-color: black;
     color: LightGreen;
     padding: 10px;
     font-size: 16pt;
     text-align: right;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 a {
