@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иванов Иван Иванович. Лабораторная 6</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .game {
+            border: solid 1px green;
+            padding: 10px;
+            width: 400px;
+            margin: 40px auto;
+            text-align: center;
+            border-radius: 20px;
+        }
+        .help {
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: aliceblue;
+            width: 600px;
+        }
+        .color {
+            background-color: yellow;
+            border: 1px solid;
+            border-radius: 3px;
+            width: 250px;
+            padding: 30px;
+            text-align: center;
+        }
+        .a {
+            position: relative;
+            left: 10px;
+            transition: 1s;
+            /* transform: rotate(0); */
+            width: 150px;
+            height: 150px;
+            /* border-radius: 50%;  */
+            background-color: green;
+            color: yellow;
+            text-align: center;
+            line-height: 150px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let number;
+        let count = 0;
+        function startGame() {
+            number = Math.floor( Math.random() * 100 ) + 1;
+            let screens = document.getElementsByClassName('game');
+            screens[0].style.display = 'none';
+            screens[1].style.display = 'block';
+        }
+        function guess() {
+            count++;
+            let input = document.getElementById('user-number');
+            let userNumber = parseInt(input.value);
+            let message = document.getElementById('result');
+            if(userNumber > number) {
+                message.innerHTML = 'Вы ввели слишком большое число';
+            }
+            else if (userNumber < number) {
+                message.innerHTML = 'Вы ввели слишком маленькое число';
+            }
+            else {
+                let screens = document.getElementsByClassName('game');
+                screens[1].style.display = 'none';
+                screens[2].style.display = 'block';
+                document.getElementById('number').innerHTML = number;
+                document.getElementById('try-count').innerHTML = count;
+            }
+        }
+        function again(params) {
+            let screens = document.getElementsByClassName('game');
+            screens[2].style.display = 'none';
+            screens[1].style.display = 'block';
+            document.getElementById('result').innerHTML = '';
+            number = Math.floor( Math.random() * 100 ) + 1;
+            count = 0;
+        }
+        function changeColor(div) {
+            if(div.style.backgroundColor == 'yellow') {
+                div.style.backgroundColor = 'red';
+                document.getElementById('color-name').innerHTML = 'красный';
+            }
+            else if(div.style.backgroundColor == 'red') {
+                div.style.backgroundColor = 'black';
+                document.getElementById('color-name').innerHTML = 'чёрный';
+            }
+            else {
+                div.style.backgroundColor = 'yellow';
+                document.getElementById('color-name').innerHTML = 'жёлтый';
+            }
+        }
+        function f(a) {
+            if(a.style.left == '10px') {
+                a.style.left = '1000px';
+                // a.style.transform = 'rotate(5turn)';
+            }
+            else {
+                a.style.left = '10px';
+                // a.style.transform = 'rotate(0turn)';
+            }
+        }
+        function filter() {
+            let color = document.getElementById('wear-color').value;
+            let type = document.getElementById('wear-type').value;
+            let wear = document.getElementById('wear');
+
+            if(color == 'Красный' && type == 'Футболка') {
+                wear.src = 'red-f.jpg';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <main>
+        <div class="game">
+            <button onclick="startGame()">
+                Сыграть в игру
+            </button>
+        </div>
+
+        <div class="game" style="display: none;">
+            <h1>Угадай число!</h1>
+            <div>
+                Задумано число от 1 до 100. Угадайте, какое?<br>
+                <input type="number" value="" min="1" max="100" id="user-number"><br>
+                <button onclick="guess()">Угадать</button>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <div class="game" style="display: none;">
+            <h1>Поздравляем, вы выиграли!</h1>
+            <div>
+                Задуманное число: <span id="number"></span>
+            </div>
+            <div>
+                Количество попыток: <span id="try-count"></span>
+            </div>
+            <div>
+                <button onclick="again()">Сыграть ещё раз</button>
+            </div>
+        </div>
+
+        <div class="help">
+            <button>Показать правила игры</button>
+        </div>
+
+        <div class="help" style="display: none;">
+            <button>Скрыть правила игры</button>
+            <ol type="A">
+                <li>сначала нажмите на кнопку "сыграть в игру"</li>
+                <li>потом делайте ещё что-то</li>
+                <li>потом ещё что-то</li>
+                <li>потом ещё</li>
+                <li>если захотите ещё раз сыграть, то ...</li>
+            </ol>
+        </div>
+
+        <div class="color" ondblclick="changeColor(this)">
+            Цвет: <span id="color-name">жёлтый</span><br>
+            Сделайте двойной щелчок, чтобы сменить.
+        </div>
+
+        <div class="a" onclick="f(this)">
+            Щёлкни меня
+        </div>
+
+        <div>
+            Цвет одежды:
+            <select id="wear-color">
+                <option>Красный</option>
+                <option>Белый</option>
+                <option>Чёрный</option>
+            </select><br>
+
+            Тип одежды:
+            <select id="wear-type">
+                <option>Футболка</option>
+                <option>Поло</option>
+                <option>Майка</option>
+            </select><br>
+
+            <button onclick="filter()">OK</button><br>
+
+            <img id="wear">
+        </div>
+    </main>
+
+    <footer>
+        &copy; Иван Иванов, ФБИ-00, 2 курс, 2023
+    </footer>
+</body>
+</html>
