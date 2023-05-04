@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иванов Иван Иванович. Лабораторная 5</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        function showSum() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a + b;
+            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showAuthor() {
+            let author = 'Автор страницы:\nИванов Иван Иванович';
+            alert(author);
+        }
+        function changeOutput(buttonNum, backColor, textColor) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+        }
+        function cleanOutput(output) {
+            output.innerHTML = '';
+            output.style.backgroundColor = '';
+            output.style.color = '';
+        }
+    </script>
+    <style>
+        .message {
+            cursor: pointer;
+            display: inline-block;
+            width: auto;
+            border-radius: 5px;
+            border: 1px solid green;
+            padding: 7px;
+            text-align: center;
+            background-color: hsl(195, 0%, 79%);
+            transition: 0.3s;
+        }
+        .message:active {
+            background-color: hsl(195, 0%, 85%);
+            transition: 0s;
+        }
+
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
+        .a {
+            border: 1px solid;
+            border-radius: 5px;
+            width: 300px;
+            margin: 50px 0;
+            padding: 20px;
+        }
+        .a > h1 {
+            margin-top: 0;
+        }
+        .a > div {
+            margin-bottom: 10px;
+        }
+        .circle {
+            border: 1px solid;
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 80px;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 1s;
+            transition-timing-function: cubic-bezier(1, -0.6, 0.735, 0.045);
+        }
+    </style>
+</head>
+
+<body>
+    <header onclick="showAuthor()">
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
+        <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
+        <div class="message" onclick="showSum()">Найти сумму чисел</div>
+
+        <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime')">
+            <input type="button" value="Кнопка 3">
+            <input type="button" value="Кнопка 4">
+        </div>
+
+        <div id="output" onclick="cleanOutput(this)"></div>
+
+        <div class="a">
+            <h1>Корзина товаров</h1>
+            <div id="">Яблоки (100р/шт): <input type="number" value="3" id=""></div>
+            <div id="">Груши (80р/шт): <input type="number" value="8" id=""></div>
+            <div id="">Апельсины (150р/шт): <input type="number" value="4" id=""></div>
+            <div id="">Дыни (300р/шт): <input type="number" value="1" id=""></div>
+            <div><button>Рассчитать</button></div>
+            <div>Общая цена: 1840 р</div>
+        </div>
+
+        <div class="circle" style="left:  30px; background-color: lime;">1</div>
+        <div class="circle" style="left: 130px; background-color: lightblue;">2</div>
+        <div class="circle" style="left: 230px; background-color: lightcoral;">3</div>
+        <div class="circle" style="left: 330px; background-color: lightgray;">4</div>
+        <div class="circle" style="left: 430px; background-color: lightgrey;">5</div>
+        <div class="circle" style="left: 530px; background-color: lightpink;">6</div>
+        <div class="circle" style="left: 630px; background-color: lightsalmon;">7</div>
+        <div class="circle" style="left: 730px; background-color: lightseagreen;">8</div>
+        <div class="circle" style="left: 830px; background-color: lightskyblue;">9</div>
+        <div class="circle" style="left: 930px; background-color: white;">10</div>
+        <div style="margin-top: 150px;"><input type="button" value="restore" onclick="restore()"></div>
+    </main>
+
+    <footer>
+        &copy; Иван Иванов, ФБИ-00, 2 курс, 2023
+    </footer>
+    <script>
+        [...document.querySelectorAll('.circle')].forEach(e => e.addEventListener('click', e => {
+            e.target.style.transform = 'scale(0)';
+            e.target.style.backgroundColorBack = e.target.style.backgroundColor;
+            e.target.style.backgroundColor = 'red';
+            e.target.style.colorBack = e.target.style.color;
+            e.target.style.color = 'white';
+        }));
+        function restore() {
+            [...document.querySelectorAll('.circle')].forEach(e => {
+                e.style.transform = 'scale(1)';
+                e.style.backgroundColor = e.style.backgroundColorBack;
+                e.style.color = e.style.colorBack;
+            });
+        }
+    </script>
+</body>
+</html>
